@@ -221,7 +221,7 @@ int ddcommit(int runmode)
 	//
 	// read data
 	//
-	u_int64_t delta_payload = 0;
+	// u_int64_t delta_payload = 0;
 	u_int64_t bound = compressBound ((u_int64_t) READ_BUFFER_SIZE);
 
 	delta_header dheader;
@@ -287,7 +287,7 @@ int ddcommit(int runmode)
 		dd_log(LOG_INFO,"this is a zipped delta file");
 	}
 
-	delta_payload = parms.delta_size_bytes - sizeof(delta_header) - sizeof(delta_footer) - (dfooter.delta_seg_count * 16);
+	// delta_payload = parms.delta_size_bytes - sizeof(delta_header) - sizeof(delta_footer) - (dfooter.delta_seg_count * 16);
 	
 	fprintf(stdout, "Zipped:             %s\n",  parms.compressedflag ? "True" : "False");
 	fprintf(stdout, "Source size:        %llu\n", (long long unsigned)dheader.source_size);

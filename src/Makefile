@@ -4,12 +4,11 @@
 
 PROJECT=ddplus ddcommit ddprofile
 
-OBJS_DDLESS = dd_file.o dd_murmurhash2.o dd_log.o dd_map.o
-
-OBJS_DDMAP = ddmap.o dd_file.o dd_log.o dd_map.o
+OBJS = dd_file.o dd_murmurhash2.o dd_log.o 
 
 CC=gcc
 CFLAGS=-O3 -Wall $(DEBUG)
+## STATIC=-static
 
 OS=$(shell uname -s)
 ifeq ($(OS),Linux)
@@ -27,23 +26,19 @@ LIBS=-lz
 
 all: $(PROJECT)
 
-ddplus: $(OBJS_DDLESS) ddless.o
-	mkdir -p bindir
-	$(CC) $(CFLAGS) $(OS_CFLAGS) -o bindir/$@ $(OBJS_DDLESS) ddless.o ${LIBS} -s -static
+ddplus: $(OBJS) dd_map.o ddless.o
+	$(CC) $(CFLAGS) $(OS_CFLAGS)  -o bindir/$@ $(OBJS) dd_map.o ddless.o ${LIBS} -s ${STATIC}
 
-ddcommit: $(OBJS_DDLESS) ddcommit.o
-	mkdir -p bindir
-	$(CC) $(CFLAGS) $(OS_CFLAGS) -o bindir/$@ $(OBJS_DDLESS) ddcommit.o ${LIBS} -s -static
+ddcommit: $(OBJS) ddcommit.o
+	$(CC) $(CFLAGS) $(OS_CFLAGS)  -o bindir/$@ $(OBJS) ddcommit.o ${LIBS} -s ${STATIC}
 
-ddprofile: $(OBJS_DDLESS) ddprofile.o
-	mkdir -p bindir
-	$(CC) $(CFLAGS) $(OS_CFLAGS) -o bindir/$@ $(OBJS_DDLESS) ddprofile.o ${LIBS} -s -static
+ddprofile: $(OBJS) ddprofile.o
+	$(CC) $(CFLAGS) $(OS_CFLAGS)  -o bindir/$@ $(OBJS) ddprofile.o ${LIBS} -s ${STATIC}
 
 clean:
+	rm -f $(OBJS)
+	rm -f dd_map.o ddcommit.o  ddless.o  ddprofile.o
 	rm -f bindir/ddplus bindir/ddcommit bindir/ddprofile
-	rm -f $(OBJS_DDLESS)
-	rm -f $(OBJS_DDMAP)
-	rm -f ddcommit.o  ddless.o  ddprofile.o
 
 #
 # dependencies
