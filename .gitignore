@@ -13,4 +13,4 @@
 *.a
 
 # Compiled binaries
-src/bindir/*
+src/bindir/dd*
