@@ -1,0 +1,11 @@
+Create a delta:
+# ddplus -s <source file/device> -c <checksum file> -x <delta file> [ -z | compression ]
+
+Show delta information:
+# ddcommit -a show -c <checksum file> -x <delta file> -t <target>
+
+Apply delta:
+# ddcommit -a apply -c <checksum file> -x <delta file> -t <target file/device>
+
+Show checksum information:
+# ddprofile -c <checksum file>
