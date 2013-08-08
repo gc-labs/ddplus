@@ -14,3 +14,6 @@
 
 # Compiled binaries
 src/bindir/dd*
+
+# Test files
+src/test/block*
