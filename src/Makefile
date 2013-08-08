@@ -39,6 +39,7 @@ clean:
 	rm -f $(OBJS)
 	rm -f dd_map.o ddcommit.o  ddless.o  ddprofile.o
 	rm -f bindir/ddplus bindir/ddcommit bindir/ddprofile
+	rm -f test/block*
 
 #
 # dependencies
