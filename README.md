@@ -1,7 +1,20 @@
 ddplus
 ======
-Based on the ddless utility:
+Based on the ddless utility - See https://www3.amherst.edu/~swplotner/iscsitarget/
 
-Sync disconnected block devices, using a state file to minimize delta size
+ddless - summary 
+================
+ddless allows the syncing of local block devices.
+The clever part is that it stores a checksum of each block it copies and only copies the changes
+the next time you run it. And, because it runs at the block level, it doesn't care about the
+filesystem inside, so you can backup Windows/Linux/BSD VMs with the same tool. The "downside" is 
+that you need to do a full read through of the source volume each time and you need to keep a 
+checksum file, 1M for each 2GB of source volume. But it doesn't suffer from the rsync issue where
+you rename a directory and have to copy that whole directory again.
 
-Creates a delta file of changes with can be applied to a remote block device or flat file
+
+why ddplus?
+===========
+The lack of network capability was a problem for me, so I extended it to produce a change file 
+(like rsync can) which can be copied to the remote backup system(s) and "applied"
+
