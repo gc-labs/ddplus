@@ -15,7 +15,7 @@ you rename a directory and have to copy that whole directory again.
 
 why ddplus?
 ===========
-The lack of network capability was a problem for me, so I extended it to produce a change file 
+The lack of network capability was a problem for me, so I extended it to produce a difference file 
 (like rsync can) which can be copied to the remote backup system(s) and "applied".
 This results in a bare-metal backup "image" of the source data which can be mounted and inspected.
 
