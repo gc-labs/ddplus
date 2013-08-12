@@ -16,5 +16,12 @@ you rename a directory and have to copy that whole directory again.
 why ddplus?
 ===========
 The lack of network capability was a problem for me, so I extended it to produce a change file 
-(like rsync can) which can be copied to the remote backup system(s) and "applied"
+(like rsync can) which can be copied to the remote backup system(s) and "applied".
+This results in a bare-metal backup "image" of the source data which can be mounted and inspected.
 
+
+when to use ddplus
+==================
+The scenario I have is:
+1) Large amounts of Virtual Machine data stored in Logical Volumes.
+2) Small amounts of bandwidth to the backup sites.
