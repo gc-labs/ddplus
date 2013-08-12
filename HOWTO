@@ -1,4 +1,6 @@
-Create a delta:
+OK, so how do you use this thing?
+
+Create delta file:
 # ddplus -s <source file/device> -c <checksum file> -x <delta file> [ -z | compression ]
 
 Show delta information:
